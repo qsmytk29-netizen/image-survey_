@@ -1,1 +1,203 @@
-<h1>Hello Survey</h1>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>가로환경 인식 평가</title>
+
+  <style>
+
+    body {
+
+      font-family: sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+
+    }
+
+    h1 {
+
+      text-align: center;
+
+    }
+
+    img {
+
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 30px;
+
+    }
+
+    .question {
+
+      margin-bottom: 40px;
+
+    }
+
+    .scale {
+
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+
+    }
+
+    button {
+
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: #4285F4;
+      color: white;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>가로환경 인식 평가</h1>
+
+  <img id="streetImage">
+
+  <form id="surveyForm">
+
+    <div id="questions"></div>
+
+    <button type="submit">
+      제출하기
+    </button>
+
+  </form>
+
+  <script>
+
+    // =========================
+    // 이미지 목록
+    // =========================
+    const imageList = [
+
+      "001.jpg",
+      "002.jpg",
+      "003.jpg",
+      "004.jpg",
+      "005.jpg"
+
+    ];
+
+    // =========================
+    // 질문 목록
+    // =========================
+    const questions = [
+
+      "1. 이 거리는 건물이나 수목 등에 의해 공간적으로 둘러싸인 느낌이 든다.",
+
+      "2. 이 거리는 건물의 높이와 거리의 규모가 보행자에게 부담스럽지 않고 친숙하게 느껴진다.",
+
+      "3. 이 거리는 건물 내부 공간이나 사람들의 활동이 잘 보인다.",
+
+      "4. 이 거리는 다양한 건물, 색채, 간판, 식생 등으로 시각적으로 풍부하게 느껴진다."
+
+    ];
+
+    // =========================
+    // 랜덤 이미지 선택
+    // =========================
+    const randomImage =
+
+      imageList[
+        Math.floor(
+          Math.random() * imageList.length
+        )
+      ];
+
+    // =========================
+    // 이미지 표시
+    // =========================
+    document.getElementById(
+      "streetImage"
+    ).src = "images/" + randomImage;
+
+    // =========================
+    // 질문 생성
+    // =========================
+    const questionDiv =
+      document.getElementById("questions");
+
+    questions.forEach((q, idx) => {
+
+      let html = `
+
+        <div class="question">
+
+          <p>
+            <b>${idx + 1}. ${q}</b>
+          </p>
+
+          <div class="scale">
+
+      `;
+
+      for (let i = 1; i <= 5; i++) {
+
+        html += `
+
+          <label>
+
+            <input type="radio"
+                   name="q${idx}"
+                   value="${i}"
+                   required>
+
+            ${i}
+
+          </label>
+
+        `;
+      }
+
+      html += `
+
+          </div>
+
+        </div>
+
+      `;
+
+      questionDiv.innerHTML += html;
+
+    });
+
+    // =========================
+    // 제출 이벤트
+    // =========================
+    document.getElementById(
+      "surveyForm"
+    ).addEventListener(
+      "submit",
+      function(e) {
+
+        e.preventDefault();
+
+        alert(
+          "설문에 응답해주셔서 감사합니다."
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
