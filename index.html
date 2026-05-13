@@ -639,27 +639,25 @@
 
           fetch(
 
-            "https://script.google.com/macros/s/AKfycbysdjvR-uD0W0ySwPVHoI8jmsnsO2bW9iz-Iltf6rSTRIT6GcTcFBQ0QZB8lMy5AapGkQ/exec",
+            "https://script.google.com/macros/s/AKfycbwhkwERAG7mZ-x-CK8aw6N8Ju2YPk24F0__DMC7cr9HdOxbiL45T-sri3Z9RlpAgxVY/exec",
 
             {
 
               method: "POST",
-
+              
+              mode: "no-cors",
+              
               body: JSON.stringify(sendData)
 
             }
 
           )
 
-          .then(response => response.json())
-
-          .then(data => {
+          .then(() => {
 
             alert(
               "설문에 응답해주셔서 감사합니다."
             );
-
-            console.log(data);
 
           })
 
