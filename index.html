@@ -449,6 +449,9 @@
     // =========================
 
     let responses = [];
+    const respondentId =
+
+      "R" + Date.now();
 
     // =========================
     // 시작 버튼
@@ -705,6 +708,7 @@
 
           const sendData = {
 
+            respondentId: respondentId,
             gender: gender,
             age: age,
             responses: responses
