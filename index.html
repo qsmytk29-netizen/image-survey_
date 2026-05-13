@@ -123,6 +123,61 @@
       font-weight: bold;
 
     }
+    .progress-text {
+
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+
+}
+
+    /* 여기부터 추가 ↓↓↓ */
+
+    .scale-wrapper {
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+    }
+
+    .scale-label {
+
+      font-size: 14px;
+      width: 120px;
+      text-align: center;
+
+    }
+
+    .button-group {
+
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+
+    }
+
+    .button-group button {
+
+      flex: 1;
+
+    }
+
+    #thankYouPage {
+
+      text-align: center;
+      padding: 80px 20px;
+
+    }
+
+    #thankYouPage h1 {
+
+      color: #4285F4;
+
+    }
+
+/* 여기까지 추가 ↑↑↑ */
 
   </style>
 
@@ -296,6 +351,15 @@
 
       <div id="questions"></div>
 
+      <div class="button-group">
+
+      <button type="button"
+              id="prevBtn">
+
+        이전
+
+      </button>
+
       <button type="submit"
               id="nextBtn">
 
@@ -303,6 +367,8 @@
 
       </button>
 
+    </div>
+      
     </form>
 
   </div>
@@ -502,6 +568,12 @@
               <b>${idx + 1}. ${q}</b>
             </p>
 
+          <div class="scale-wrapper">
+
+            <div class="scale-label">
+              매우 그렇지 않다
+            </div>
+            
             <div class="scale">
 
         `;
@@ -528,7 +600,11 @@
 
             </div>
 
-          </div>
+            <div class="scale-label">
+              매우 그렇다
+            </div>
+          
+            </div>
 
         `;
 
@@ -655,9 +731,13 @@
 
           .then(() => {
 
-            alert(
-              "설문에 응답해주셔서 감사합니다."
-            );
+            document.getElementById(
+              "surveyPage"
+            ).classList.add("hidden");
+
+            document.getElementById(
+              "thankYouPage"
+            ).classList.remove("hidden");
 
           })
 
@@ -681,7 +761,53 @@
       }
     );
 
+// =========================
+// 이전 버튼
+// =========================
+
+document.getElementById(
+  "prevBtn"
+).addEventListener(
+  "click",
+  function() {
+
+    if (currentIndex > 0) {
+
+      currentIndex--;
+
+      loadSurvey();
+
+    }
+
+  }
+);
+    
   </script>
 
+  <!-- ========================= -->
+  <!-- 완료 페이지 -->
+  <!-- ========================= -->
+
+    <div id="thankYouPage"
+         class="hidden">
+
+      <h1>
+        설문에 응답해주셔서 감사합니다.
+      </h1>
+
+      <p>
+
+        소중한 응답은
+        연구 목적으로만 사용됩니다.
+
+      </p>
+
+      <p>
+
+        좋은 하루 되세요 :)
+
+      </p>
+
+    </div>
 </body>
 </html>
