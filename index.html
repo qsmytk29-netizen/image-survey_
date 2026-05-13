@@ -585,6 +585,7 @@
               <input type="radio"
                      name="q${idx}"
                      value="${i}"
+                     ${checked}
                      required>
 
               ${i}
@@ -641,10 +642,13 @@
 
         // 응답 저장
 
+        const currentImage =
+
+          selectedImages[currentIndex];
+
         const answer = {
 
-          image:
-            selectedImages[currentIndex]
+          image: currentImage
 
         };
 
