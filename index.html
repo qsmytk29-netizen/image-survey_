@@ -351,23 +351,12 @@
 
       <div id="questions"></div>
 
-      <div class="button-group">
-
-      <button type="button"
-              id="prevBtn">
-
-        이전
-
-      </button>
-
       <button type="submit"
               id="nextBtn">
 
         다음
 
       </button>
-
-    </div>
       
     </form>
 
@@ -769,27 +758,6 @@
 
       }
     );
-
-// =========================
-// 이전 버튼
-// =========================
-
-document.getElementById(
-  "prevBtn"
-).addEventListener(
-  "click",
-  function() {
-
-    if (currentIndex > 0) {
-
-      currentIndex--;
-
-      loadSurvey();
-
-    }
-
-  }
-);
     
   </script>
 
